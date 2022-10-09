@@ -1,0 +1,94 @@
+name: dockercompose17292022388732115125
+services:
+  pokemonapi:
+    build:
+      context: F:\VisualProject\git\PokemonApi
+      dockerfile: Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: PokemonApi
+      target: base
+    container_name: PokemonApi_1
+    depends_on:
+      sql:
+        condition: service_started
+    entrypoint:
+    - tail
+    - -f
+    - /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      Database: Pokedex
+      NUGET_FALLBACK_PACKAGES: ""
+      Password: Yourpassword123
+      ServerName: sql
+      UserName: SA
+    image: pokemonapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/netcoreapp3.1/PokemonApi.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 80
+      published: "80"
+      protocol: tcp
+    tty: true
+    volumes:
+    - type: bind
+      source: F:\VisualProject\git\PokemonApi\PokemonApi
+      target: /app
+      bind:
+        create_host_path: true
+    - type: bind
+      source: F:\VisualProject\git\PokemonApi
+      target: /src
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Sduke\vsdbg\vs2017u5
+      target: /remote_debugger
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Sduke\.nuget\packages\
+      target: /root/.nuget/packages
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Sduke\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Sduke\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+  sql:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Yourpassword123
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 1433
+      published: "1433"
+      protocol: tcp
+networks:
+  default:
+    name: dockercompose17292022388732115125_default

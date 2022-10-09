@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  
+  sql:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    environment:
+      MSSQL_SA_PASSWORD: "Yourpassword123"
+      ACCEPT_EULA: "Y"
+    ports:
+          - "1433:1433"
+
+  pokemonapi:
+    image: ${DOCKER_REGISTRY-}pokemonapi
+    build:
+      context: .
+      dockerfile: PokemonApi/Dockerfile
+    ports:
+            - "8080:80"
+    depends_on:
+     - sql

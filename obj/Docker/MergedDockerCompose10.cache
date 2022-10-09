@@ -1,0 +1,40 @@
+name: dockercompose17292022388732115125
+services:
+  database:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: null
+    hostname: sqlserver
+    image: mcr.microsoft.com/mssql/server
+    networks:
+      default: null
+  pokemonapi:
+    build:
+      context: F:\VisualProject\git\PokemonApi
+      dockerfile: PokemonApi/Dockerfile
+    depends_on:
+      database:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DATABASE: Pokedex
+      INTEGRATED_SECURITY: "true"
+      PORT: "1433"
+      SERVER: mcr.microsoft.com/mssql/server
+      TRUST_SERVER_CERTIFICATE: "false"
+    image: pokemonapi
+    links:
+    - database
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 80
+      published: "8000"
+      protocol: tcp
+networks:
+  default:
+    name: dockercompose17292022388732115125_default

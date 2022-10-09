@@ -6,7 +6,7 @@ namespace PokemonApi.Contexts
     public class ConnectionSql:DbContext
     {
 
-        public ConnectionSql(DbContextOptions<ConnectionSql> options) : base(options)
+        public ConnectionSql(DbContextOptions options) : base(options)
         { 
         
         //

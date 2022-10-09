@@ -22,12 +22,20 @@ namespace PokemonApi
             Configuration = configuration;
         }
 
+        string corsPolicy = "AllowAllOrigins";
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(corsPolicy, builder =>
+                {
+                    builder.AllowAnyOrigin();
+                });
+            });
             services.AddDbContext<ConnectionSql>(options => options.UseSqlServer(Configuration.GetConnectionString("ConexionSql")));
             services.AddControllers();
         }
@@ -51,6 +59,8 @@ namespace PokemonApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(corsPolicy);
 
             app.UseEndpoints(endpoints =>
             {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5WhJddrWbdKCz4ER6AjwFGFnjo8O8Rotw35Li1bwLIZSQD9Qv28gQcl+t2jzEsdOetIdLtz4CZxBJQWZa1blpA==",
+  "dgSpecHash": "/DtqEwR9PA0U1zlxL6aKTaMS+moQWKQ2a+VynYUBWc4yvptFeRAOZQpaCCOH4kdk4Bl7mKKomobx1d6HYgSjPA==",
   "success": true,
-  "projectFilePath": "F:\\VisualProject\\PokemonApi\\PokemonApi\\PokemonApi.csproj",
+  "projectFilePath": "F:\\VisualProject\\git\\PokemonApi\\PokemonApi\\PokemonApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sduke\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Sduke\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
@@ -29,6 +29,7 @@
     "C:\\Users\\Sduke\\.nuget\\packages\\microsoft.identitymodel.tokens\\5.6.0\\microsoft.identitymodel.tokens.5.6.0.nupkg.sha512",
     "C:\\Users\\Sduke\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Sduke\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
+    "C:\\Users\\Sduke\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512",
     "C:\\Users\\Sduke\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Sduke\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Sduke\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",

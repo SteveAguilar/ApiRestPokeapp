@@ -12,10 +12,10 @@ namespace PokemonApi.Controllers
     [ApiController]
     public class MovesController : ControllerBase
     {
-        private readonly ConnectionSql context;
-        public MovesController(ConnectionSql context)
+        private readonly ConnectionSql _sql;
+        public MovesController(ConnectionSql sql)
         {
-            this.context = context;
+            _sql = sql;
         }
 
 
@@ -23,14 +23,15 @@ namespace PokemonApi.Controllers
         [HttpGet]
         public IEnumerable<Moves> Get()
         {
-            return context.moves.ToList();
+
+            return _sql.moves.ToList();
         }
 
         // GET api/<MovesController>/5
         [HttpGet("{id}")]
         public dynamic Get(int id)
         {
-            return context.moves.Find(id);
+            return _sql.moves.Find(id);
         }
 
         /*

@@ -1,0 +1,37 @@
+name: dockercompose17292022388732115125
+services:
+  pokemonapi:
+    build:
+      context: F:\VisualProject\git\PokemonApi
+      dockerfile: PokemonApi/Dockerfile
+    depends_on:
+      sql:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: pokemonapi
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 80
+      published: "8080"
+      protocol: tcp
+  sql:
+    environment:
+      ACCEPT_EULA: "true"
+      SA_PASSWORD: Yourpassword123
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 1433
+      published: "1433"
+      protocol: tcp
+networks:
+  default:
+    name: dockercompose17292022388732115125_default
